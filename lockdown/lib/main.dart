@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -224,7 +225,7 @@ class RestrictedAccess extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 100,
+              height: 50,
               decoration: BoxDecoration(
                   color: Colors.tealAccent[400],
                   shape: BoxShape.rectangle,
@@ -234,7 +235,10 @@ class RestrictedAccess extends StatelessWidget {
                       colors: [Colors.lightGreen, Colors.green]
                   )
               ),
-            ),
+              width: 300,
+              alignment: Alignment.center,
+              child: Text("Your device is under lockdown",
+                  style: TextStyle(fontSize: 15, color: Colors.white))),
             FlatButton(
               color: Colors.lightGreen,
               textColor: Colors.white,

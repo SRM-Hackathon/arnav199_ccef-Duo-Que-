@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
-import 'package:sms_retriever/sms_retriever.dart';
+import 'package:flutter/material.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -131,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: ()
               {
                 if(passwordin.text == correctPassword && usernamein.text != "")
-                  Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),);
+                  Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => SecondRoute()),);
                 else print("Please check your username or password");
               },
               child: Text('Log in'),
@@ -163,7 +164,9 @@ class SecondRoute extends StatelessWidget {
 */
 class SecondRoute extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
+    //String smsCode = await SmsRetriever.startListening();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -211,15 +214,16 @@ class SecondRoute extends StatelessWidget {
 }
 
 class RestrictedAccess extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(""),
-      ),
-      body: Center(
 
+    return WillPopScope(
+
+      onWillPop: null,
+      child: Scaffold(
+      backgroundColor : Colors.white,
+      body: Center(
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
@@ -256,6 +260,7 @@ class RestrictedAccess extends StatelessWidget {
           ],
         ),
       ),
+    )
     );
   }
 }

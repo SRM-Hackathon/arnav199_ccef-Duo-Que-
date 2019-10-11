@@ -31,7 +31,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController passwordin = TextEditingController();
   TextEditingController usernamein = TextEditingController();
-  var correctPassword = "9024";
+
+  String _smsCode = "";
+
+  getCode(String sms) {
+      if (sms != null) {
+        final intRegex = RegExp(r'\d+', multiLine: true);
+        final code = intRegex.allMatches(sms).first.group(0);
+        return code;
+    }
+      return "NO SMS";
+  }
+
+  Future<String> listenSms() async
+  {
+      String smsCode = await SmsRetriever.startListening();
+      _smsCode = getCode(smsCode);
+      return _smsCode;
+  }
+
+  void lock()
+  {
+      Future<String> sms = listenSms();
+      if(sms == "0000")
+          Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => RestrictedAccess()));
+  }
+
+  String correctPassword = "9024";
+  //No database present yet so temporary password is 9024
+
   @override
   Widget build(BuildContext context) {
 

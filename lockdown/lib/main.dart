@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(8.0),
               splashColor: Colors.green,
               onPressed: (){
-                Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),
+                Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => SecondRoute()),
 
                 );
               },
@@ -140,7 +140,6 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
       ),
       body: Center(
         child: RaisedButton(

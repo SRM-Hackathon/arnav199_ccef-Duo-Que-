@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController passwordin = TextEditingController();
   TextEditingController usernamein = TextEditingController();
-
+  TextEditingController deactivatein = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -128,12 +128,11 @@ class _MyHomePageState extends State<MyHomePage> {
               disabledTextColor: Colors.black,
               padding: EdgeInsets.all(8.0),
               splashColor: Colors.green,
-              onPressed: (){
-                if(passwordin == "7018")
-                {Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),}
-                else InputDecoration(labeltext: 'Wrong password');
-
-                );
+              onPressed: ()
+              {
+                //if(passwordin == true)
+                Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),);
+                //else InputDecoration(labeltext: 'Wrong password');
               },
               child: Text('Log in'),
             ),
@@ -212,7 +211,6 @@ class SecondRoute extends StatelessWidget {
 }
 
 class RestrictedAccess extends StatelessWidget {
- // TextEditingController deactivatein = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

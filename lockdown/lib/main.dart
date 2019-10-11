@@ -215,13 +215,28 @@ class SecondRoute extends StatelessWidget {
 
 class RestrictedAccess extends StatelessWidget {
 
+  Future<bool> _onbackpressed(){
+    return  showDialog(
+        context: null,
+        builder: (context)=>AlertDialog(
+          title: Text("You cant go back"),
+          actions: <Widget>[FlatButton(child: Text("go back"),
+          onPressed: ()=>Navigator.pop(context,false),
+          )
+          ],
+        )
+    );
+  }
   @override
   Widget build(BuildContext context) {
 
     return WillPopScope(
 
-      onWillPop: null,
+      onWillPop: _onbackpressed,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(""),
+        ),
       backgroundColor : Colors.white,
       body: Center(
         child: Column(

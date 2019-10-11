@@ -64,3 +64,9 @@ header{
 	margin-right: 15px;
 	border: 1px solid #bf55ec; 
 }
+.secondary-content-para{
+	width: 1180px;
+	position: absolute;
+	top: 50%;
+	left:50%;
+}

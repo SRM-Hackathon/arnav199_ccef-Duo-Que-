@@ -40,8 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController passwordin = TextEditingController();
   TextEditingController usernamein = TextEditingController();
-  TextEditingController deactivatein = TextEditingController();
-
+  var correctPassword = "9024";
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -93,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.all(10),
                 child: TextField(
                   controller: usernamein,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.visiblePassword,
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                     decoration:
                     InputDecoration(labelText: 'Username')),
@@ -130,9 +129,9 @@ class _MyHomePageState extends State<MyHomePage> {
               splashColor: Colors.green,
               onPressed: ()
               {
-                //if(passwordin == true)
-                Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),);
-                //else InputDecoration(labeltext: 'Wrong password');
+                if(passwordin.text == correctPassword && usernamein.text != "")
+                  Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),);
+                else print("Please check your username or password");
               },
               child: Text('Log in'),
             ),

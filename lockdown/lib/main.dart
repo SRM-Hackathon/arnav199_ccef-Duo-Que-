@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'LOCKDOWN',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'LOCKDOWN'),
     );
   }
 }
@@ -91,21 +91,53 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.tealAccent[400],
+                shape: BoxShape.rectangle,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                    decoration:
+                    InputDecoration(labelText: 'Username')),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.tealAccent[400],
+                shape: BoxShape.rectangle,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                    decoration:
+                    InputDecoration(labelText: 'Password')),
+              ),
+            ),
+            FlatButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              disabledColor: Colors.grey,
+              disabledTextColor: Colors.black,
+              padding: EdgeInsets.all(8.0),
+              splashColor: Colors.blueAccent,
+              onPressed: (){
+                Navigator.push( context, MaterialPageRoute(builder: (context) => MainPage()),
+
+                );
+              },
+              child: Text('Log in'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

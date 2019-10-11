@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 
 void main() => runApp(MyApp());
 
@@ -36,6 +37,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  TextEditingController passwordin = TextEditingController();
+  TextEditingController usernamein = TextEditingController();
 
 
   @override
@@ -88,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: usernamein,
                     keyboardType: TextInputType.number,
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                     decoration:
@@ -107,7 +112,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
-                    keyboardType: TextInputType.number,
+                  controller: passwordin,
+                    keyboardType: TextInputType.visiblePassword,
+
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                     obscureText: true,
                     decoration:
@@ -122,7 +129,9 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(8.0),
               splashColor: Colors.green,
               onPressed: (){
-                Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => SecondRoute()),
+                if(passwordin == "7018")
+                {Navigator.push( context, MaterialPageRoute(builder: (context) => SecondRoute()),}
+                else InputDecoration(labeltext: 'Wrong password');
 
                 );
               },
@@ -134,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
+/*
 class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -144,9 +153,106 @@ class SecondRoute extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RestrictedAccess()));
           },
           child: Text('INITIATE LOCKDOWN'),
+        ),
+      ),
+    );
+  }
+}
+*/
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(""),
+      ),
+      body: Center(
+
+        child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+          color: Colors.lightGreen,
+          textColor: Colors.white,
+          disabledColor: Colors.grey,
+          disabledTextColor: Colors.black,
+          padding: EdgeInsets.all(8.0),
+          splashColor: Colors.green,
+              child: Text('INITIATE LOCKDOWN'),
+              onPressed: ()
+              {
+                Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => RestrictedAccess()));
+              }
+                  ),
+
+            FlatButton(
+              color: Colors.lightGreen,
+              textColor: Colors.white,
+              disabledColor: Colors.grey,
+              disabledTextColor: Colors.black,
+              padding: EdgeInsets.all(8.0),
+              splashColor: Colors.green,
+              onPressed: (){
+                Navigator.pop(context
+
+                );
+              },
+              child: Text('Log out'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RestrictedAccess extends StatelessWidget {
+ // TextEditingController deactivatein = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(""),
+      ),
+      body: Center(
+
+        child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  color: Colors.tealAccent[400],
+                  shape: BoxShape.rectangle,
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.topRight,
+                      colors: [Colors.lightGreen, Colors.green]
+                  )
+              ),
+            ),
+            FlatButton(
+              color: Colors.lightGreen,
+              textColor: Colors.white,
+              disabledColor: Colors.grey,
+              disabledTextColor: Colors.black,
+              padding: EdgeInsets.all(8.0),
+              splashColor: Colors.green,
+              onPressed: (){
+                Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => SecondRoute()),
+
+                );
+              },
+              child: Text('Deactivate'),
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login result</title>
+</head>
+<body>
 
+
+</body>
+</html>
 
 <?php
 //the database was created in phpmyadmin in xampp server where it had 3 coloms id, username and password
@@ -21,6 +30,9 @@
 	$row = mysql_fetch_array($result);
 	if($row['username'] == $username && $row['password'] == $password){
 	echo"Login succesfull Welcome " .$row['username'];
+	$target ="sendsms.php";
+	$linkname = "Send SMS"
+	link($target,$linkname);
 	}
 	else{
 		echo "failed to login";

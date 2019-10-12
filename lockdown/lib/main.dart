@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sms_retriever/sms_retriever.dart';
+//import 'package:sms_retriever/sms_retriever.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,9 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<String> listenSms() async
   {
-      String smsCode = await SmsRetriever.startListening();
-      _smsCode = getCode(smsCode);
-      return _smsCode;
+      //String smsCode = await SmsRetriever.startListening();
+      //_smsCode = getCode(smsCode);
+      //return _smsCode;
   }
 
   void lock()
@@ -129,8 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => SecondRoute()),);
                 else print("Please check your username or password");
               },
-              child: Text('Log in'),
+              child: FadeAnimatedTextKit(
+                duration: Duration(milliseconds: 5000),
+                text: ["Log in", "LOCKDOWN"],
+                alignment: Alignment.center,
+                textStyle: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+              ),
             ),
+
           ],
         ),
       ),
@@ -155,13 +162,18 @@ class SecondRoute extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-          color: Colors.lightGreen,
+          color: Colors.lightGreen[900],
           textColor: Colors.white,
           disabledColor: Colors.grey,
           disabledTextColor: Colors.black,
           padding: EdgeInsets.all(8.0),
           splashColor: Colors.green,
-              child: Text('INITIATE LOCKDOWN'),
+              child: RotateAnimatedTextKit(
+                duration: Duration(milliseconds: 10000),
+                text: ["INITIATE LOCKDOWN", "RESTRICT ACCESS", "START LOCKDOWN"],
+                alignment: Alignment.center,
+                textStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,),
+              ),
               onPressed: ()
               {
                 Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => RestrictedAccess()));
@@ -220,7 +232,7 @@ class RestrictedAccess extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 50,
+              height: 100,
               decoration: BoxDecoration(
                   color: Colors.tealAccent[400],
                   shape: BoxShape.rectangle,
@@ -230,10 +242,26 @@ class RestrictedAccess extends StatelessWidget {
                       colors: [Colors.lightGreen, Colors.green]
                   )
               ),
-              width: 300,
+              width: 500,
               alignment: Alignment.center,
-              child: Text("Your device is under lockdown",
-                  style: TextStyle(fontSize: 15, color: Colors.white))),
+              child: ColorizeAnimatedTextKit(
+                text: [
+                  "Your device is under lockdown",
+                  "Your access is restricted",
+                  "Enter password to continue",
+                ],alignment: Alignment.center,
+                textStyle: TextStyle(
+                    fontSize: 25.0,
+                    fontFamily: "Horizon"
+                ),
+                colors: [
+                  Colors.white,
+                  Colors.green[50],
+                  Colors.green[100],
+                  Colors.green[200],
+                ],
+              ),
+            ),
             FlatButton(
               color: Colors.lightGreen,
               textColor: Colors.white,
@@ -248,6 +276,7 @@ class RestrictedAccess extends StatelessWidget {
               },
               child: Text('Deactivate'),
             ),
+
           ],
         ),
       ),

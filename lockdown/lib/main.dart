@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:sms_retriever/sms_retriever.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:progress_button/progress_button.dart';
 
 void main() => runApp(MyApp());
 
@@ -276,7 +277,9 @@ class RestrictedAccess extends StatelessWidget {
               },
               child: Text('Deactivate'),
             ),
+          Slider(
 
+          )
           ],
         ),
       ),

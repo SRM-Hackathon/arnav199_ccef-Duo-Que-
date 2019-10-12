@@ -1,6 +1,7 @@
-//the database was created on phpMyAdmin in Xampp server 
+
 
 <?php
+//the database was created in phpmyadmin in xampp server where it had 3 coloms id, username and password
 	// get values from login form
 	$username =$_POST['user'];
 	$password =$_POST['pass'];

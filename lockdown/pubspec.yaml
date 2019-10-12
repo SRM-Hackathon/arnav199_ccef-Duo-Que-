@@ -24,7 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   animated_text_kit: ^1.1.0
-  sms_retriever: ^0.0.2
+  #sms_retriever: ^0.0.2    for retriving the code from sms
 flutter_verification_code_input:
   git:
     url: git://github.com/tinylife-io/flutter_verification_code_input.git

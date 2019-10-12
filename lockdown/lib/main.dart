@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
-//import 'package:sms_retriever/sms_retriever.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:sms_retriever/sms_retriever.dart';
-void main() => runApp(MyApp()){
 
-};
+//import ‘package:sms_retriever/sms_retriever.dart’;
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // //This widget is the root of your application.
+  // This widget is the root of your application.
+  //String smsCode = await SmsRetriever.startListening(); for reciving the sms
+  /*class _MyAppState extends State<MyApp> {
+  String _smsCode = "";
+  bool isListening = false;
+
+  getCode(String sms) {
+    if (sms != null) {
+      final intRegex = RegExp(r'\d+', multiLine: true);
+      final code = intRegex.allMatches(sms).first.group(0);
+      return code;
+    }
+    return "NO SMS";
+  }*/
   @override
-  _My//AppState createState() =>_MyAppstate();
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'LOCKDOWN',
@@ -20,20 +31,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-lass _MyAppState extends State<MyApp> {
-String _smsCode = "";
-bool isListening = false;
-
-getCode(String sms) {
-  if (sms != null) {
-    final intRegex = RegExp(r'\d+', multiLine: true);
-    final code = intRegex.allMatches(sms).first.group(0);
-    return code;
-  }
-  return "NO SMS";
-}
-
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
